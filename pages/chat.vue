@@ -8,6 +8,11 @@
   export default {
     name: "chat",
     middleware: ['chat'],
+    head() {
+      return {
+        title: 'Комната ' + this.user.room
+      }
+    },
     computed: mapState(["user"]),
   }
 </script>
