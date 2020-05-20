@@ -42,6 +42,7 @@
 </template>
 
 <script>
+  import { mapMutations } from 'vuex';
   export default {
     layout: 'empty',
     sockets: {
@@ -66,8 +67,15 @@
     }),
 
     methods: {
+      ...mapMutations(['setUser']),
       submit () {
         this.$refs.form.validate()
+        const user = {
+          name: this.name,
+          room: this.room
+        };
+        this.setUser(user);
+        this.$router.push('/chat');
       }
     },
   }
